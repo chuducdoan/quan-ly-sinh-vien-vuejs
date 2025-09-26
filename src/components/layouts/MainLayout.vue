@@ -62,6 +62,7 @@ export default {
   height: 100%;
   background-color: #1b264f;
   overflow-y: auto;
+  flex-shrink: 0;
 }
 
 .right {

@@ -14,6 +14,9 @@ import Students from './views/Students.vue';
 import BaseTable from './components/UI/BaseTable.vue';
 import StudentDetail from './views/StudentDetail.vue';
 import BaseRadio from './components/UI/BaseRadio.vue';
+import BaseDatepicker from './components/UI/BaseDatepicker.vue';
+import BaseSelect from './components/UI/BaseSelect.vue';
+import BaseUpload from './components/UI/BaseUpload.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -54,6 +57,9 @@ const app = createApp(App);
 app.component('BaseButton', BaseButton);
 app.component('BaseTable', BaseTable);
 app.component('BaseRadio', BaseRadio);
+app.component('BaseDatepicker', BaseDatepicker);
+app.component('BaseSelect', BaseSelect);
+app.component('BaseUpload', BaseUpload);
 
 app.use(router);
 app.use(VCalendar, {
