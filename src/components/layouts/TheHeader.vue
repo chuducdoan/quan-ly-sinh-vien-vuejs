@@ -46,7 +46,7 @@
           <span
             class="absolute -top-2 -right-2 inline-flex items-center justify-center h-4 w-4 rounded-full bg-red-500 text-white text-[10px] font-bold"
           >
-            3
+            {{ cartQuantity }}
           </span>
         </div>
 
@@ -86,6 +86,11 @@
 <script>
 export default {
   inject: ['toggleSidebar'],
+  computed: {
+    cartQuantity() {
+      return this.$store.getters['cart/quantity'];
+    },
+  },
 };
 </script>
 

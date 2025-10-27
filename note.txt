@@ -38,3 +38,20 @@ Dữ lieu 1 chiều
 	+ rendering multiple routes with named router views
 	+ Controlling Scroll Behavior: khi bạn nhấp vào 1 link router để chuyển trang và muốn scroll lên trên đầu mà ko muốn bị mắc kẹt ở dưới
 	cấu hình ở router, scrollBehavior() {...}
+	+ navigation guards: 
+		router.beforeEach((to, from, next) => {
+			next();
+		});
+	+ beforeRouteEnter()
+	+ beforeRoteLeave(): viết cho sựu kiện khi đang trong form mà muốn rời trang sẽ có alert thông báo
+	+ meta data: meta: {needsAuth: true}
+- animation: thẻ <transition></transition> tạo animation vs các class .v-enter-from, .v-enter-active, .v-enter-to, .v-leave-from, .v-leave-active, .v-leave-to
+	+ mode="out-in"
+	+ sự kiện @before-enter và @before-leave
+- Vuex:
+	+ What: là 1 thư viện để quản lý global state
+	+ setup: npm i --save vuex@next
+	+ mapGetters
+	+ modules, trong getters chú ý các khái niệm state, getters, rootState, rootGetters
+	+ Mô hình vuex:
+		Components -> Actions -> Mutations -> App-wide, central Data Store/State Store -> Getters -> Components

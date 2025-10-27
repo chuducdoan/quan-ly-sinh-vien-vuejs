@@ -3,7 +3,7 @@
     <div class="flex items-center justify-between">
       <h4 class="text-xl">Danh sách học sinh</h4>
       <div class="flex items-center gap-5">
-        <button class="p-1 rounded hover:bg-gray-100">
+        <button class="p-1 rounded hover:bg-gray-100" @click="saveChanges">
           <!-- Icon filter -->
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -218,12 +218,30 @@ export default {
           location: 'Singanallur',
         },
       ],
+      changedSave: false,
     };
   },
   methods: {
     updateStudent(data) {
       console.log('>>> data: ', data);
     },
+    saveChanges() {
+      this.changedSave = true;
+    },
+  },
+  beforeRouteLeave(to, from, next) {
+    if (this.changedSave) {
+      next();
+    } else {
+      const answer = window.confirm(
+        'Bạn có chắc chắn muốn rời trang? Các thay đổi chưa được lưu sẽ bị mất.',
+      );
+      if (answer) {
+        next();
+      } else {
+        next(false);
+      }
+    }
   },
 };
 </script>

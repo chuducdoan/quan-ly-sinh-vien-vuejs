@@ -17,6 +17,10 @@ import BaseRadio from './components/UI/BaseRadio.vue';
 import BaseDatepicker from './components/UI/BaseDatepicker.vue';
 import BaseSelect from './components/UI/BaseSelect.vue';
 import BaseUpload from './components/UI/BaseUpload.vue';
+import Teacher from './views/Teacher.vue';
+import BaseDialog from './components/UI/BaseDialog.vue';
+import store from './store/index.js';
+import ProductList from './views/ProductList.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -28,6 +32,8 @@ const router = createRouter({
         { path: 'home', component: Home },
         { path: 'students', component: Students },
         { path: 'students/:id', component: StudentDetail },
+        { path: 'teachers', component: Teacher },
+        { path: 'products', component: ProductList },
       ],
     },
 
@@ -60,9 +66,11 @@ app.component('BaseRadio', BaseRadio);
 app.component('BaseDatepicker', BaseDatepicker);
 app.component('BaseSelect', BaseSelect);
 app.component('BaseUpload', BaseUpload);
+app.component('BaseDialog', BaseDialog);
 
 app.use(router);
 app.use(VCalendar, {
   componentPrefix: 'vc',
 });
+app.use(store);
 app.mount('#app');

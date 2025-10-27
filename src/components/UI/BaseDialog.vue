@@ -1,21 +1,23 @@
 <template>
   <teleport to="body">
-    <div @click="$emit('close')"></div>
-    <dialog open>
-      <header>
-        <slot name="header">
-          <h2>{{ title }}</h2>
-        </slot>
-      </header>
-      <section>
-        <slot></slot>
-      </section>
-      <menu>
-        <slot name="actions">
-          <base-button @click="$emit('close')">Close</base-button>
-        </slot>
-      </menu>
-    </dialog>
+    <div v-if="open" @click="$emit('close')"></div>
+    <transition name="modal">
+      <dialog v-if="open" open>
+        <header>
+          <slot name="header">
+            <h2>{{ title }}</h2>
+          </slot>
+        </header>
+        <section>
+          <slot></slot>
+        </section>
+        <menu>
+          <slot name="actions">
+            <base-button @click="$emit('close')">Close</base-button>
+          </slot>
+        </menu>
+      </dialog>
+    </transition>
   </teleport>
 </template>
 
@@ -26,6 +28,10 @@ export default {
       type: String,
       required: false,
       default: '',
+    },
+    open: {
+      type: Boolean,
+      required: true,
     },
   },
   emits: ['close'],
@@ -55,6 +61,7 @@ dialog {
   padding: 0;
   margin: 0;
   overflow: hidden;
+  animation: modal 0.3s ease-out forwards;
 }
 
 header {
@@ -83,6 +90,27 @@ menu {
   dialog {
     left: calc(50% - 20rem);
     width: 40rem;
+  }
+}
+
+.modal-enter-active {
+  /* transition: all 0.3s ease-out; */
+  animation: modal 0.3s ease-out;
+}
+
+.modal-leave-active {
+  animation: modal 0.3s ease-in reverse;
+}
+
+@keyframes modal {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 </style>
